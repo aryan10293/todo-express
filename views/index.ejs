@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/main.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lets get stuff done!!</h1>
+    <form action="/list" method="POST">
+        <input type="text" placeholder='Task' name="task">
+        <input type="date" name="date">
+        <button type="submit">Add Task</button>
+    </form>
+    <div>
+        <h2>Task to get done</h2>
+        <ul>
+            <% for(let i = 0; i<list.length; i++) {%>
+                <li class="quotes">
+                    <span><%= list[i].taskItem %></span>
+                    <span><%= list[i].dueDate %></span>
+                    <input type="text" placeholder="edit....." class="hidden">
+                    <button class="edit">Edit Task</button>
+                    <button id="delete">Delete Task</button>
+                </li>
+            <%}  %>
+        </ul>
+    </div>
+</body>
+</html>
