@@ -56,6 +56,16 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
             })
             .catch(error => console.error(error))
         })
+
+        app.delete('/deleteEdit', (req, res) => {
+            db.collection('list-items').deleteOne({taskItem: req.body.taskLists})
+            .then(result => {
+                console.log('Edit Deleted')
+                res.json('Edit Deleted')
+            })
+            .catch(error => console.error(error))
+        
+        })
     })
 
 app.listen(process.env.PORT, ()=>{
