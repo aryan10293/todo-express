@@ -66,8 +66,8 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         app.delete('/deleteEdit', (req, res) => {
             db.collection('list-items').deleteOne({taskItem: req.body.taskLists})
             .then(result => {
-                console.log('Edit Deleted')
-                res.json('Edit Deleted')
+                console.log('Task Deleted')
+                res.json('Task Deleted')
             })
             .catch(error => console.error(error))
         
