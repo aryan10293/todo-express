@@ -39,6 +39,23 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
                     })
                     .catch(err => console.error(err))
         })
+
+        app.put('/editSave', (req,res) => {
+            console.log(req.body)
+            db.collection('list-items').updateOne({taskItem: req.body.taskLists, dueDate: req.body.dueDateS}, {
+                $set: {
+                    taskItem: req.body.update
+                }
+            }, {
+                sort: {_id: -1},
+                upsert: false
+            })
+            .then(result => {
+                console.log('updated task')
+                res.json('task changed')
+            })
+            .catch(error => console.error(error))
+        })
     })
 
 app.listen(process.env.PORT, ()=>{
