@@ -22,8 +22,9 @@
                 <li class="quotes">
                     <span><%= list[i].taskItem %></span>
                     <span><%= list[i].dueDate %></span>
-                    <input type="text" placeholder="edit....." class="hidden">
+                    <input id=<%= list[i].taskItem %> type="text" placeholder="edit....." class="hidden">
                     <button class="edit">Edit Task</button>
+                    <button class="hidden">Save Edit</button>
                     <button id="delete">Delete Task</button>
                 </li>
             <%}  %>
