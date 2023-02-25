@@ -7,7 +7,7 @@ const app = express()
 const PORT = process.env.PORT || 2000
 
 let db,
-    dbConnectionStr = process.env.DB_STRING,
+    dbConnectionStr = 'mongodb+srv://drej:wegoget@cluster0.vrzhagd.mongodb.net/?retryWrites=true&w=majority',
     dbName = 'To-Do-List'
 
 app.set('view engine', 'ejs')
