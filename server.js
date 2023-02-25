@@ -23,7 +23,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         console.log(`Connected to ${dbName} Database`)
         db = client.db(dbName)
         const lebron = db.collection('list-items')
-
+        console.log(dbConnectionStr)
 
         app.get('/', (req,res) => {
             const cursor = db.collection('list-items').find().toArray()
