@@ -17,7 +17,14 @@ app.use(express.json())
 app.use(cors())
 // app.use(helmet())
 // app.use(morgan('dev'))
-
+app.get('/', (req,res) => {
+    const cursor = db.collection('list-items').find().toArray()
+    .then(results => {
+        console.log(results)
+        res.render('index.ejs', {list: results})
+    })
+    .catch(err => console.error(err))
+})
 MongoClient.connect('mongodb+srv://drej:wegoget@cluster0.vrzhagd.mongodb.net/?retryWrites=true&w=majority', { useUnifiedTopology: true })
     .then(client => {
         console.log(`Connected to ${dbName} Database`)
@@ -25,14 +32,6 @@ MongoClient.connect('mongodb+srv://drej:wegoget@cluster0.vrzhagd.mongodb.net/?re
         const lebron = db.collection('list-items')
 
 
-        app.get('/', (req,res) => {
-            const cursor = db.collection('list-items').find().toArray()
-            .then(results => {
-                console.log(results)
-                res.render('index.ejs', {list: results})
-            })
-            .catch(err => console.error(err))
-        })
 
         app.post('/list', (req,res) => {
             console.log(req.body)
