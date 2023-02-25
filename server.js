@@ -4,7 +4,7 @@ const MongoClient = require('mongodb').MongoClient
 const cors = require('cors')
 require('dotenv').config()
 const app = express()
-let PORT = process.env.PORT || 2000
+//let PORT = process.env.PORT || 2000
 
 let db,
     dbConnectionStr = process.env.DB_STRING,
@@ -73,6 +73,6 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         })
     })
 
-app.listen(PORT, ()=>{
-    console.log(`Server running on port ${PORT}`)
+app.listen(process.env.PORT || 2000, ()=>{
+    console.log(`Server running on port ${process.env.PORT || 2000}`)
 })
