@@ -1,9 +1,10 @@
 const { request } = require('express')
 const express = require('express')
 const MongoClient = require('mongodb').MongoClient
+const cors = require('cors')
 require('dotenv').config()
 const app = express()
-let PORT = process.env.PORT || 2000
+const PORT = process.env.PORT || 2000
 
 let db,
     dbConnectionStr = process.env.DB_STRING,
@@ -14,8 +15,8 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cors())
-app.use(helmet())
-app.use(morgan('dev'))
+// app.use(helmet())
+// app.use(morgan('dev'))
 
 MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
     .then(client => {
