@@ -7,7 +7,7 @@ const app = express()
 const PORT = process.env.PORT || 2000
 
 let db,
-    dbConnectionStr = 'mongodb+srv://drej:wegoget@cluster0.vrzhagd.mongodb.net/?retryWrites=true&w=majority',
+    dbConnectionStr = process.env.DB_STRING,
     dbName = 'To-Do-List'
 
 app.set('view engine', 'ejs')
@@ -18,7 +18,7 @@ app.use(cors())
 // app.use(helmet())
 // app.use(morgan('dev'))
 
-MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
+MongoClient.connect('mongodb+srv://drej:wegoget@cluster0.vrzhagd.mongodb.net/?retryWrites=true&w=majority', { useUnifiedTopology: true })
     .then(client => {
         console.log(`Connected to ${dbName} Database`)
         db = client.db(dbName)
